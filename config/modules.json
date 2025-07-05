@@ -1,0 +1,42 @@
+[
+  {
+    "name": "ultrasonic_sensor",
+    "host": "pi",
+    "cmd": "python /home/gbrouwer/Wheels/src/ultrasonic_sensor.py",
+    "type": "server",
+    "port": 6604,
+    "sudo": false
+  },
+  {
+    "name": "picamera_server",
+    "host": "pi",
+    "cmd": "python /home/gbrouwer/Wheels/src/picamera.py",
+    "type": "server",
+    "port": 6600,
+    "sudo": false
+  },
+  {
+    "name": "light_sensor_left",
+    "host": "pi",
+    "cmd": "python3 /home/gbrouwer/Wheels/src/light_sensors.py --port 6601 --channel 0 --sensor_name light_sensor_left",
+    "type": "server",
+    "port": 6601,
+    "sudo": false
+  },
+  {
+    "name": "light_sensor_right",
+    "host": "pi",
+    "cmd": "python3 /home/gbrouwer/Wheels/src/light_sensors.py --port 6602 --channel 1 --sensor_name light_sensor_right",
+    "type": "server",
+    "port": 6602,
+    "sudo": false
+  },
+  {
+    "name": "infrared_sensor",
+    "host": "pi",
+    "cmd": "python /home/gbrouwer/Wheels/src/infrared_sensor.py",
+    "type": "server",
+    "port": 6603,
+    "sudo": false
+  }
+]

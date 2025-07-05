@@ -1,0 +1,90 @@
+[
+  {
+    "name": "light_sensor",
+    "host": "pi",
+    "cmd": "python /home/gbrouwer/Wheels/src/light_sensor.py",
+    "type": "server",
+    "port": 6601,
+    "sudo": false
+  },
+  {
+    "name": "infrared_sensor",
+    "host": "pi",
+    "cmd": "python /home/gbrouwer/Wheels/src/infrared_sensor.py",
+    "type": "server",
+    "port": 6603,
+    "sudo": false
+  },
+  {
+    "name": "ultrasonic_sensor",
+    "host": "pi",
+    "cmd": "python /home/gbrouwer/Wheels/src/ultrasonic_sensor.py",
+    "type": "server",
+    "port": 6604,
+    "sudo": false
+  },
+  {
+    "name": "picamera_server",
+    "host": "pi",
+    "cmd": "python /home/gbrouwer/Wheels/src/picamera.py",
+    "type": "server",
+    "port": 6600,
+    "sudo": false
+  },
+  {
+    "name": "motor_client",
+    "host": "pi",
+    "cmd": "python /home/gbrouwer/Wheels/src/motor_client.py",
+    "type": "client",
+    "port": 9020,
+    "sudo": false
+  },
+  {
+    "name": "servo_client",
+    "host": "pi",
+    "cmd": "python /home/gbrouwer/Wheels/src/servo_client.py",
+    "type": "client",
+    "port": 9040,
+    "sudo": true
+  },
+  {
+    "name": "led_client",
+    "host": "pi",
+    "cmd": "python /home/gbrouwer/Wheels/src/led_client.py",
+    "type": "client",
+    "port": 9050,
+    "sudo": true
+  },
+  {
+    "name": "MotorCommandServer",
+    "host": "pc",
+    "cmd": "/path/to/MotorCommandServerLauncher.exe",
+    "type": "server",
+    "port": 9020,
+    "sudo": false
+  },
+  {
+    "name": "ServoCommandServer",
+    "host": "pc",
+    "cmd": "/path/to/ServoCommandServerLauncher.exe",
+    "type": "server",
+    "port": 9040,
+    "sudo": false
+  },
+  {
+    "name": "LEDCommandServer",
+    "host": "pc",
+    "cmd": "/path/to/LEDCommandServerLauncher.exe",
+    "type": "server",
+    "port": 9050,
+    "sudo": false
+  },
+  {
+    "name": "UnityWebSocketListener",
+    "host": "pc",
+    "cmd": "/path/to/UnityWebSocketListener.exe",
+    "type": "server",
+    "port": 9010,
+    "sudo": false
+  }
+]
