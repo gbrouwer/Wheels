@@ -1,0 +1,83 @@
+Hey!
+Have you tried turning me off and on again?
+Can you repeat that?
+Computer says no
+Computer says yes
+Rebooting
+Booting
+I heard something
+I saw something
+Ball
+Red
+Green
+Yellow
+Blue
+Purple
+White
+Black
+Blue
+Pink
+Hello there!
+Does not conputer!
+No
+Yes
+Eh... NO!
+Hmmm... Ok!
+Please Stand By
+I am sorry, but what?!
+You got it!
+Peanutbutter Jello Time!
+All systems operational!
+Booting all systems
+Startup Sound
+OK!
+I dont know!
+Ready!
+Processing
+Light sensor module active
+ultrasonic sensor module active
+infrared sensor module active
+camera module active
+Speaker module active [pause] Duh!
+microphone sensor module active
+LED Module active, pretty colors!
+motor module active
+servo module active
+battery low
+1 percent
+5 percent
+20 percent
+25 percent
+50 percent
+75 percent
+100 percent
+one
+two
+three
+four
+five
+six
+seven
+eight
+nine 
+ten
+zoer
+Ooops!
+Ouchy!
+Can do!
+I just cant
+Bazooka!
+Bonky!!
+Loki my man!!
+Go!
+Error
+Woohoo!
+Woot woot!
+That was nuts!
+NARF!
+I am serious! [pause] and dont call me Shirley
+Error!
+Cut it out!
+Stop!
+Here kitty kitty!
+

@@ -1,0 +1,16 @@
+[rushed] — speaks faster, urgent pacing
+[slowly] — drags out words, slower tempo
+[drawn out] — extra-long syllables for dramatic effect
+[steady] — smooth, moderate pace
+[hesitant] — slight pauses, uncertainty
+[stammers] — introduces stuttering or repeated sounds
+[pauses] — inserts a short break before continuing
+[long pause] — creates an extended silence
+[brief pause] — shorter than [pauses], subtle timing shift
+[narrates] — switches to a narrative style
+[announces] — formal delivery, like a speaker or presenter
+[explains] — instructional or descriptive tone
+[emphasizes] — gives extra weight to the next words
+[quotes] — adjusts intonation to indicate quoted speech
+[dramatic pause] — adds tension, suspense
+[deliberate] — measured, intentional pacing
