@@ -2,29 +2,37 @@ import asyncio
 import json
 import signal
 import sys
+import argparse
 from led import Led
 import websockets
+from broadcasting_client import BroadcastingClient
+from logger import Logger
 
 class LEDClient:
-    def __init__(self, uri="ws://192.168.178.237:9020/led"):  # ← replace with your actual Unity IP and LED port
-        self.uri = uri
+    def __init__(self, host, port):
+        self.uri = f"ws://{host}:{port}/led"
         self.led = Led()
         self.should_run = True
+        self.broadcasting_client = BroadcastingClient()
+        self.logger = Logger("led_client", "/home/gbrouwer/Wheels/logs/led_client.log")
 
     async def listen_forever(self):
-        print(f"[LEDClient] 🚀 Starting. Target server: {self.uri}")
+        self.logger.log(f"Starting. Target server: {self.uri}")
+        await self.send_status_update({"module": "led_client", "status": "boot_success"})
+
         while self.should_run:
             try:
-                print(f"[LEDClient] 🔄 Attempting to connect...")
+                self.logger.log(f"Attempting to connect...")
                 async with websockets.connect(self.uri) as websocket:
-                    print(f"[LEDClient] ✅ Connected to server.")
+                    self.logger.log(f"Connected to server.")
+                    await self.send_status_update({"module": "led_client", "status": "connected"})
+
                     async for message in websocket:
                         try:
                             data = json.loads(message)
                             command = data.get("command", "")
                             colors = data.get("colors", [])
-
-                            print(f"[LEDClient] ⬅️ Received command: {command} with colors: {colors}")
+                            self.logger.log(f"Received command: {command} with colors: {colors}")
 
                             if command == "setColor" and len(colors) == 8:
                                 for i, color in enumerate(colors):
@@ -34,24 +42,37 @@ class LEDClient:
                             elif command == "turnOff":
                                 self.led.strip.set_all_led_color(0, 0, 0)
                                 self.led.strip.show()
-
                         except Exception as e:
-                            print(f"[LEDClient] ⚠️ Invalid message: {message} — {e}")
+                            self.logger.log(f"Invalid message: {message} — {e}")
             except Exception as e:
-                print(f"[LEDClient] ❌ Connection failed: {e}")
+                self.logger.log(f"Connection failed: {e}")
+                await self.send_status_update({"module": "led_client", "status": "disconnected"})
 
-            print("[LEDClient] 🔁 Retrying in 2 seconds...")
+            self.logger.log("Retrying in 2 seconds...")
             await asyncio.sleep(2)
 
+    async def send_status_update(self, message_dict):
+        if self.broadcasting_client.ws:
+            try:
+                await self.broadcasting_client.send_message(message_dict)
+                self.logger.log(f"Sent status update: {message_dict}")
+            except Exception as e:
+                self.logger.log(f"Failed to send status update: {e}")
+
     def cleanup(self):
-        print("[LEDClient] 🛑 Shutting down...")
+        self.logger.log("Shutting down...")
         self.should_run = False
         self.led.strip.set_all_led_color(0, 0, 0)
         self.led.strip.show()
         sys.exit(0)
 
 if __name__ == "__main__":
-    client = LEDClient()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--host", required=True)
+    parser.add_argument("--port", type=int, required=True)
+    args = parser.parse_args()
+
+    client = LEDClient(host=args.host, port=args.port)
 
     def shutdown(*_):
         client.cleanup()
